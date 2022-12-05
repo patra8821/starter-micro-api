@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json({ extended: false, limit: "250mb" }));
 
 app.post("*", (req, res) => {
-  console.log(JSON.stringify(req.data));
+  console.log(req);
   res.send("Hello World!");
 });
 
