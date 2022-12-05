@@ -6,7 +6,7 @@ const decData = async (req, res) => {
     const buffer = Buffer.from(encData, "base64");
     const decData = crypto.privateDecrypt(
       {
-        key: process.env.PRIVATE_KEY,
+        key: process.env.PRIVATE,
         passphrase: process.env.PASSPHRASE,
       },
       buffer
