@@ -1,9 +1,11 @@
-const http = require("http");
-http
-  .createServer(function (req, res) {
-    console.log(`Just got a request at ${req.url}!`);
-    console.log(req);
-    res.write("Yo! World?");
-    res.end();
-  })
-  .listen(process.env.PORT || 3000);
+const express = require("express");
+
+const app = express();
+
+app.use(exoress.json());
+
+app.use("*", (req, res) => {
+  console.log(req);
+});
+
+app.listen(process.env.PORT || 3000);
