@@ -15,6 +15,7 @@ const decData = async (req, res) => {
     console.log(decData.toString("utf8"));
   } catch (error) {
     console.log(error);
+    res.status(500).json(process.env.PRIVATE);
   }
 };
 
