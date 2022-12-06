@@ -11,7 +11,7 @@ const decData = async (req, res) => {
       },
       buffer
     );
-    console.log(decData);
+    console.log(decData.toString("utf8").replace(/\\/g, ""));
     res.status(200).json(decData.toString("utf8"));
   } catch (error) {
     console.log(error);
