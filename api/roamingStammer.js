@@ -12,7 +12,7 @@ const decData = async (req, res) => {
       buffer
     );
     console.log(decData.toString("utf8"));
-    res.status(200).json({ url: "", publicKey: "" });
+    res.status(200).json("Success");
   } catch (error) {
     console.log(error);
     res.status(500).json(error.message);

@@ -13,5 +13,6 @@ app.use(express.json({ extended: false, limit: "250mb" }));
 app.use("/roaming-stammer", checkAuth, require("./api/roamingStammer"));
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("server listing on 3000");
+  const arr = process.env.CONTRIES.split("_");
+  console.log("server listing on 3000", arr);
 });
