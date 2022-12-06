@@ -11,11 +11,11 @@ const decData = async (req, res) => {
       },
       buffer
     );
+    console.log(decData);
     res.status(200).json(decData.toString("utf8"));
-    console.log(decData.toString("utf8"));
   } catch (error) {
     console.log(error);
-    res.status(500).json(process.env.PRIVATE_KEY);
+    res.status(500).json(error.message);
   }
 };
 
