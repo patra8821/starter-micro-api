@@ -1,26 +1,24 @@
 const axios = require("axios");
+const countries = process.env.CONTRIES;
 
 const checkAuth = async (req, res, next) => {
-  console.log("called");
   try {
-    console.log("info", req.body);
     let ip =
       req.headers["cf-connecting-ip"] ||
       req.headers["x-forwarded-for"] ||
       req.connection.remoteAddress ||
-      req.ip;
+      req.ip ||
+      "";
 
     console.log("info ip====", ip);
-    if (ip.split(":")[2] == "ffff") {
-      ip = ip.split(":")[3];
-    }
-
-    let respo = await axios.get(`http://ip-api.com/json/${ip}`);
-    console.log(respo);
-    next();
-  } catch (e) {
-    console.log("/api/v0.0.1/device/info.js (xinj-16)", e.message); //xinj-16
-    res.sendStatus(500);
+    let response = await axios.get(`http://ip-api.com/json/${ip}`);
+    const countryArr = countries.split("_");
+    countryArr.map(
+      (countryName) => countryName === response.data.country && next()
+    );
+    console.log(response.data.country);
+  } catch (error) {
+    console.log("ip getting failed", error.message);
   }
 };
 
