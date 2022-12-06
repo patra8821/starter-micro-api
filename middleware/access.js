@@ -18,7 +18,7 @@ const checkAuth = async (req, res, next) => {
     );
     console.log(response.data.country);
   } catch (error) {
-    console.log("ip getting failed", error.message);
+    console.log("ip getting failed", response.data.country, error.message);
   }
 };
 
