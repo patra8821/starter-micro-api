@@ -14,7 +14,7 @@ const decData = async (req, res) => {
     const decryptedData = decData.toString("utf8");
     return decryptedData;
   } catch (error) {
-    console.log("err on dec data:", error.message);
+    console.log("err on decrypting data:", error.message);
   }
 };
 

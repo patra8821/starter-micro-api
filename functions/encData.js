@@ -1,18 +1,18 @@
 const crypto = require("crypto");
 
-const encData = async (req, res) => {
+const encData = async (req, res, decryptedData) => {
   try {
     const resData = {
-      url: "https://google.com",
-      datKey: "JDSYJKbhiok86VJI7BVon-08VB7tv65GV7v",
+      url: process.env.URL,
+      dataKey: process.env.DATA_PUBLIC_KEY,
     };
-    const publicKey = process.env.DEVICE_PUBLICK_KEY;
+    const publicKey = decryptedData.publicKey;
     const encBuffer = Buffer.from(JSON.stringify(resData), "utf8");
-    const encRes = crypto.publicEncrypt(publicKey, encBuffer);
-    const encryptedData = encRes.toString("base64");
+    const encyptedRes = crypto.publicEncrypt(publicKey, encBuffer);
+    const encryptedData = encyptedRes.toString("base64");
     return encryptedData;
   } catch (error) {
-    console.log("err on enc data:", error.message);
+    console.log("err on encrypting data:", error.message);
   }
 };
 
