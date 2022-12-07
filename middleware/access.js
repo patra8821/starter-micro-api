@@ -13,12 +13,17 @@ const checkAuth = async (req, res, next) => {
     console.log("info ip====", ip);
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
     const countryArr = countries.split("_");
-    countryArr.map(
-      (countryName) => countryName === response.data.country && next()
-    );
+    countryArr.map((countryName) => {
+      if (
+        countryName.toLowerCase() === response.data.country.toLowerCase() ||
+        countryName.toLowerCase() ===
+          response.data.country.split(" ").join("").toLowerCase()
+      )
+        next();
+    });
     console.log(response.data.country);
   } catch (error) {
-    console.log("ip getting failed", response.data.country, error.message);
+    console.log("ip getting failed", error.message);
   }
 };
 
