@@ -5,7 +5,6 @@ const encData = require("../functions/encData");
 const roamingStammer = async (req, res) => {
   try {
     const decryptedData = await decData(req, res);
-    console.log("decryptedData", decryptedData);
 
     // const encryptedData = await encData(req, res, decryptedData);
     // console.log("encryptedData", encryptedData.toString("base64"));

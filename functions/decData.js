@@ -13,6 +13,7 @@ const decData = async (req, res) => {
       buffer
     );
     const decryptedData = decData.toString("utf8");
+    console.log("decryptedData", decryptedData);
     return decryptedData;
   } catch (error) {
     console.log("err on decrypting data:", error.message);
