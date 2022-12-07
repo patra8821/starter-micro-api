@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const decData = async (req, res) => {
   try {
     const { data } = req.body;
+    console.log("data", data);
     const buffer = Buffer.from(data, "base64");
     const decData = crypto.privateDecrypt(
       {
