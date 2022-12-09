@@ -19,9 +19,10 @@ const checkAuth = async (req, res, next) => {
         countryName.toLowerCase() === response.data.country.toLowerCase() ||
         countryName.toLowerCase() ===
           response.data.country.split(" ").join("").toLowerCase()
-      )
-        req.key = decryptedData.devicePublicKey;
-      next();
+      ) {
+        req.devicePublicKey = decryptedData.devicePublicKey;
+        next();
+      }
       console.log("request Country:", response.data.country);
     });
   } catch (error) {

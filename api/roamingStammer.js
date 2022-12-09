@@ -2,6 +2,7 @@ const encData = require("../functions/encData");
 
 const roamingStammer = async (req, res) => {
   try {
+    console.log("req.devicePublicKey,", req.devicePublicKey);
     const encryptedData = await encData(req, res);
     res.status(200).json({ data: encryptedData });
   } catch (error) {
