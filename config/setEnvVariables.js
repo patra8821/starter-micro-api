@@ -8,10 +8,10 @@ const setEnvVariables = async () => {
         process.env[`${vars.variableName}`] = vars.variableValue;
       }
     });
-    console.log(process.env.CONTRIES);
+    console.trace(process.env.CONTRIES);
     require("../server");
   } catch (error) {
-    console.log("error on variable getting from db", error.message);
+    console.trace("error on variable getting from db", error.message);
   }
 };
 

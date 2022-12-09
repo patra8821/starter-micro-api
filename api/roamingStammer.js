@@ -3,12 +3,12 @@ const encData = require("../functions/encData");
 
 const roamingStammer = async (req, res) => {
   try {
-    console.log("called");
+    console.trace("called");
     const decryptedData = await decData(req, res);
     const encryptedData = await encData(req, res, decryptedData);
     res.status(200).json({ data: encryptedData });
   } catch (error) {
-    console.log(error);
+    console.trace(error);
     res.status(500).json(error.message);
   }
 };

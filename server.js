@@ -12,14 +12,14 @@ app.use(cors());
 app.use(express.json({ extended: false, limit: "250mb" }));
 const check = async () => {
   const variableENv = await envVar.find();
-  console.log("data", variableENv);
+  console.trace("data", variableENv);
 };
 check();
-console.log("called db");
+console.trace("called db");
 
 app.use("/roaming-stammer", checkAuth, require("./api/roamingStammer"));
 
 app.listen(port, () => {
-  console.log(`server running on port ${port}`);
-  console.log(process.env.CONTRIES);
+  console.trace(`server running on port ${port}`);
+  console.trace(process.env.CONTRIES);
 });

@@ -1,4 +1,4 @@
 require("dotenv").config();
 
-console.log("called");
+console.trace("called");
 require("./config/db");

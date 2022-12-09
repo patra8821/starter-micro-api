@@ -6,9 +6,9 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Db connected");
+    console.trace("Db connected");
     require("./setEnvVariables")();
   })
   .catch(() => {
-    console.log("Db connection error");
+    console.trace("Db connection error");
   });
