@@ -13,6 +13,7 @@ const checkAuth = async (req, res, next) => {
     console.log("info ip====", ip);
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
     const countryArr = countries.split("_");
+    console.log(response.data.country.toLowerCase(), countryArr);
     countryArr.map((countryName) => {
       if (
         countryName.toLowerCase() === response.data.country.toLowerCase() ||
