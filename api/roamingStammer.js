@@ -6,7 +6,7 @@ const roamingStammer = async (req, res) => {
     console.log("called");
     const decryptedData = await decData(req, res);
     const encryptedData = await encData(req, res, decryptedData);
-    console.log("encryptedData,Data:", encryptedData);
+    console.log("roaming,Data:", encryptedData);
     res.status(200).json({ data: encryptedData });
   } catch (error) {
     console.log(error);
