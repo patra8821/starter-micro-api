@@ -10,5 +10,7 @@ mongoose
   })
   .catch(() => {
     console.trace("Db connection error");
-    require("./setEnvVariables")();
+    // require("./setEnvVariables")();
   });
+
+// c98
