@@ -21,6 +21,7 @@ const checkAuth = async (req, res, next) => {
           response.data.country.split(" ").join("").toLowerCase()
       )
         next();
+      console.log(countryName.toLowerCase());
     });
     console.log(response.data.country);
     res.status(200).json({ message: "Varification Completed" });
