@@ -10,5 +10,8 @@ mongoose.connect(
     err
       ? console.error("err on connecting db", err)
       : console.log("Successfully connected to database...");
+  },
+  () => {
+    require("./setEnvVariables")();
   }
 );
