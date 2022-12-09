@@ -12,7 +12,4 @@ const connectDB = async () => {
   }
 };
 
-connectDB().then(() => {
-  console.log("Db connected");
-  require("./setEnvVariables")();
-});
+module.exports = connectDB;
