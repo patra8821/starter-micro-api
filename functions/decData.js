@@ -21,7 +21,6 @@ const decData = async (req, res) => {
       message,
       decryptionKeys: privateKey,
     });
-    console.log("Decrypted Data", decrypted);
     return decrypted;
   } catch (error) {
     console.log("Error On Decrypting Data:", error.message);
