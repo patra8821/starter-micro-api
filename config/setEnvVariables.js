@@ -1,6 +1,6 @@
 const envVar = require("../models/env");
 
-const setEnvVariables = async (cb) => {
+const setEnvVariables = async () => {
   try {
     const variableENv = await envVar.find();
     variableENv.map((vars) => {
@@ -8,6 +8,7 @@ const setEnvVariables = async (cb) => {
         process.env[`${vars.variableName}`] = vars.variableValue;
       }
     });
+    console.log(process.env.CONTRIES);
     require("../server");
   } catch (error) {
     console.log("error on variable getting from db", error.message);
