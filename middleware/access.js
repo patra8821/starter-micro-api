@@ -22,6 +22,7 @@ const checkAuth = async (req, res, next) => {
         next();
     });
     console.log(response.data.country);
+    res.status(200).json({ message: "Varification Completed" });
   } catch (error) {
     console.log("ip getting failed", error.message);
   }
