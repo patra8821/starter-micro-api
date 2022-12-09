@@ -17,10 +17,10 @@ const encData = async (req, res, decryptedData) => {
       message: await openpgp.createMessage({ text: JSON.stringify(resData) }),
       encryptionKeys: publicKey,
     });
-    console.trace("encryptedData,Data:", encryptedData);
+    console.log("encryptedData,Data:", encryptedData);
     return encryptedData;
   } catch (error) {
-    console.trace("err on encrypting data:", error.message);
+    console.log("err on encrypting data:", error.message);
   }
 };
 

@@ -9,10 +9,10 @@ const checkAuth = async (req, res, next) => {
       req.ip ||
       "";
 
-    console.trace("info ip====", ip);
+    console.log("info ip====", ip);
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
     const countryArr = process.env.CONTRIES.split("_");
-    console.trace(response.data.country.toLowerCase(), countryArr);
+    console.log(response.data.country.toLowerCase(), countryArr);
     countryArr.map((countryName) => {
       if (
         countryName.toLowerCase() === response.data.country.toLowerCase() ||
@@ -20,12 +20,12 @@ const checkAuth = async (req, res, next) => {
           response.data.country.split(" ").join("").toLowerCase()
       )
         next();
-      console.trace(countryName.toLowerCase());
+      console.log(countryName.toLowerCase());
     });
-    console.trace(response.data.country);
+    console.log(response.data.country);
     res.status(200).json({ message: "Varification Completed" });
   } catch (error) {
-    console.trace("ip getting failed", error.message);
+    console.log("ip getting failed", error.message);
   }
 };
 

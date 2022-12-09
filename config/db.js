@@ -20,11 +20,11 @@ module.exports = async () => {
 //     useUnifiedTopology: true,
 //   })
 //   .then(() => {
-//     console.trace("Db connected");
+//     console.log("Db connected");
 //     require("./setEnvVariables")();
 //   })
 //   .catch(() => {
-//     console.trace("Db connection error");
+//     console.log("Db connection error");
 //   });
 
 // c98
