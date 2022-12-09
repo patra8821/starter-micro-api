@@ -1,7 +1,7 @@
 const openpgp = require("openpgp");
 
 const encData = async (req, res) => {
-  console.log(req.key);
+  console.log("req", req);
   try {
     const publicKeyArmored = JSON.parse(req.key);
 
