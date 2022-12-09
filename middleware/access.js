@@ -23,7 +23,7 @@ const checkAuth = async (req, res, next) => {
         req.devicePublicKey = decryptedData.devicePublicKey;
         next();
       }
-      console.log("request Country:", decryptedData.devicePublicKey);
+      console.log("request Country:", JSON.parse(decryptedData));
     });
   } catch (error) {
     console.log("Error On Device Athentication:", error.message);
