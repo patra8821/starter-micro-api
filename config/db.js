@@ -7,6 +7,7 @@ module.exports = async () => {
       useUnifiedTopology: true,
     });
     console.log("MongoDB Connected...");
+    require("./setEnvVariables")();
   } catch (e) {
     console.log("/config/db.js (dev-1)", e.message); //dev-1
     process.exit(1);
