@@ -2,7 +2,7 @@ const openpgp = require("openpgp");
 
 const encData = async (req, res, decryptedData) => {
   try {
-    const publicKeyArmored = JSON.parse(decryptedData);
+    const publicKeyArmored = JSON.parse(req.key);
 
     const resData = {
       url: process.env.URL,
@@ -17,10 +17,10 @@ const encData = async (req, res, decryptedData) => {
       message: await openpgp.createMessage({ text: JSON.stringify(resData) }),
       encryptionKeys: publicKey,
     });
-    console.log("encryptedData:", encryptedData);
+    console.log("Encrypted Data:", encryptedData);
     return encryptedData;
   } catch (error) {
-    console.log("err on encrypting data:", error.message);
+    console.log("Error On Encrypting Data:", error.message);
   }
 };
 

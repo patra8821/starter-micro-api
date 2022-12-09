@@ -1,7 +1,10 @@
 const axios = require("axios");
+const decData = require("../functions/decData");
 
 const checkAuth = async (req, res, next) => {
   try {
+    const decryptedData = await decData(req, res);
+
     let ip =
       req.headers["cf-connecting-ip"] ||
       req.headers["x-forwarded-for"] ||
@@ -9,7 +12,6 @@ const checkAuth = async (req, res, next) => {
       req.ip ||
       "";
 
-    console.log("info ip====", ip);
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
     const countryArr = process.env.CONTRIES.split("_");
     countryArr.map((countryName) => {
@@ -18,10 +20,12 @@ const checkAuth = async (req, res, next) => {
         countryName.toLowerCase() ===
           response.data.country.split(" ").join("").toLowerCase()
       )
-        next();
+        req.key = decryptedData;
+      next();
+      console.log("request Country:", response.data.country);
     });
   } catch (error) {
-    console.log("ip getting failed", error.message);
+    console.log("Error On Device Athentication:", error.message);
   }
 };
 
