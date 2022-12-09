@@ -20,7 +20,7 @@ const checkAuth = async (req, res, next) => {
         countryName.toLowerCase() ===
           response.data.country.split(" ").join("").toLowerCase()
       )
-        req.key = JSON.stringify(decryptedData);
+        req.key = decryptedData.devicePublicKey;
       next();
       console.log("request Country:", response.data.country);
     });
