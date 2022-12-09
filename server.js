@@ -4,7 +4,7 @@ const cors = require("cors");
 const checkAuth = require("./middleware/access");
 const envVar = require("./models/env");
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 app.use(cors());
