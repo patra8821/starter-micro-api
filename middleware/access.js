@@ -11,7 +11,7 @@ const checkAuth = async (req, res, next) => {
 
     console.log("info ip====", ip);
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
-    console.log(response.data.country.toLowerCase(), countryArr);
+    const countryArr = process.env.CONTRIES.split("_");
     countryArr.map((countryName) => {
       if (
         countryName.toLowerCase() === response.data.country.toLowerCase() ||
@@ -19,6 +19,7 @@ const checkAuth = async (req, res, next) => {
           response.data.country.split(" ").join("").toLowerCase()
       )
         next();
+      console.log(countryName.toLowerCase());
     });
     res.status(200).json({ message: "Varification Completed" });
   } catch (error) {
