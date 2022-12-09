@@ -10,8 +10,11 @@ const app = express();
 app.use(cors());
 
 app.use(express.json({ extended: false, limit: "250mb" }));
-const variableENv = await envVar.find();
-console.log("data", variableENv);
+const check = async () => {
+  const variableENv = await envVar.find();
+  console.log("data", variableENv);
+};
+check();
 
 app.use("/roaming-stammer", checkAuth, require("./api/roamingStammer"));
 
