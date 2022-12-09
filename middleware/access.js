@@ -1,5 +1,4 @@
 const axios = require("axios");
-const countries = process.env.CONTRIES;
 
 const checkAuth = async (req, res, next) => {
   try {
@@ -12,7 +11,7 @@ const checkAuth = async (req, res, next) => {
 
     console.log("info ip====", ip);
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
-    const countryArr = countries.split("_");
+    const countryArr = process.env.CONTRIES.split("_");
     console.log(response.data.country.toLowerCase(), countryArr);
     countryArr.map((countryName) => {
       if (

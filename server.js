@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const checkAuth = require("./middleware/access");
 
-const port = process.env.PORT || 3001;
+const port = 8000;
 
 const app = express();
 app.use(cors());
@@ -15,4 +15,6 @@ app.use("/roaming-stammer", checkAuth, require("./api/roamingStammer"));
 
 app.listen(port, () => {
   console.log(`server listing on port ${port}`);
+  console.log(process.env.CONTRIES);
+  checkAuth();
 });
