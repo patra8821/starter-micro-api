@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 
 const checkAuth = require("./middleware/access");
-const envVar = require("./models/env");
 
 const port = process.env.PORT || 8000;
 
