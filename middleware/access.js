@@ -4,7 +4,7 @@ const decData = require("../functions/decData");
 const checkAuth = async (req, res, next) => {
   try {
     const decryptedData = await decData(req, res);
-    console.log("Decrypted Data", decryptedData);
+    console.log("Decrypted Data", JSON.parse(decryptedData));
     const data = JSON.parse(decryptedData);
     let ip =
       req.headers["cf-connecting-ip"] ||
