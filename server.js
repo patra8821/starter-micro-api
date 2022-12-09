@@ -16,5 +16,4 @@ app.use("/roaming-stammer", checkAuth, require("./api/roamingStammer"));
 app.listen(port, () => {
   console.log(`server listing on port ${port}`);
   console.log(process.env.CONTRIES);
-  checkAuth();
 });
