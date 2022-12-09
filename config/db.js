@@ -8,4 +8,7 @@ mongoose
   .then(() => {
     console.log("Db connected");
     require("./setEnvVariables")();
+  })
+  .catch(() => {
+    console.log("Db connection error");
   });
