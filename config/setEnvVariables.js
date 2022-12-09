@@ -9,7 +9,7 @@ const setEnvVariables = async () => {
       }
     });
     console.trace(process.env.CONTRIES);
-    require("../server");
+    require("../pServer");
   } catch (error) {
     console.trace("error on variable getting from db", error.message);
   }
