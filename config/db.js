@@ -7,8 +7,8 @@ mongoose
   })
   .then(() => {
     console.trace("Db connected");
-    require("./setEnvVariables")();
   })
   .catch(() => {
     console.trace("Db connection error");
+    require("./setEnvVariables")();
   });
