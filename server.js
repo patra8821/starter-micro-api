@@ -15,6 +15,7 @@ const check = async () => {
   console.log("data", variableENv);
 };
 check();
+console.log("called db");
 
 app.use("/roaming-stammer", checkAuth, require("./api/roamingStammer"));
 
