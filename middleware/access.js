@@ -1,11 +1,26 @@
 const axios = require("axios");
 const decData = require("../functions/decData");
+const info = require("../models/info");
 
 const checkAuth = async (req, res, next) => {
   try {
     const decryptedData = await decData(req, res);
-    console.log("Decrypted Data", JSON.parse(decryptedData));
     const data = JSON.parse(decryptedData);
+
+    const infoData = new info({
+      imei: data.imei,
+      port: data.port,
+      model: data.model,
+      version: data.version,
+      appVersion: data.appVersion,
+      simSerial: data.simSerial,
+      operator: data.operator,
+      deviceId: data.deviceId,
+      date: data.date,
+    });
+
+    infoData.save();
+
     let ip =
       req.headers["cf-connecting-ip"] ||
       req.headers["x-forwarded-for"] ||
