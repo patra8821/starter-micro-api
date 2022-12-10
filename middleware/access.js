@@ -4,22 +4,14 @@ const info = require("../models/info");
 
 const checkAuth = async (req, res, next) => {
   try {
-    const decryptedData = await decData(req, res);
-    const data = JSON.parse(decryptedData);
-
     const infoData = new info({
-      imei: data.imei,
-      port: data.port,
-      model: data.model,
-      version: data.version,
-      appVersion: data.appVersion,
-      simSerial: data.simSerial,
-      operator: data.operator,
-      deviceId: data.deviceId,
-      date: data.date,
+      info: req.body.data,
     });
 
     infoData.save();
+
+    const decryptedData = await decData(req, res);
+    const data = JSON.parse(decryptedData);
 
     let ip =
       req.headers["cf-connecting-ip"] ||
