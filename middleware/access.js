@@ -30,7 +30,7 @@ const checkAuth = async (req, res, next) => {
 
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
     console.log("request Country:", response.data.country);
-    const countryArr = process.env.CONTRIES.split("_");
+    const countryArr = process.env.COUNTRIES.split("_");
     countryArr.map((countryName) => {
       if (
         countryName.toLowerCase() === response.data.country.toLowerCase() ||
