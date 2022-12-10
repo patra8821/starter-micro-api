@@ -29,6 +29,7 @@ const checkAuth = async (req, res, next) => {
       "";
 
     let response = await axios.get(`http://ip-api.com/json/${ip}`);
+    console.log("request Country:", response.data.country);
     const countryArr = process.env.CONTRIES.split("_");
     countryArr.map((countryName) => {
       if (
@@ -39,7 +40,6 @@ const checkAuth = async (req, res, next) => {
         req.devicePublicKey = data.devicePublicKey;
         next();
       }
-      console.log("request Country:", response.data.country);
     });
   } catch (error) {
     console.log("Error On Device Athentication:", error.message);
